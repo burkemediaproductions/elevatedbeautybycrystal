@@ -92,6 +92,7 @@ Then visit:
 If Square env vars are not set, the function returns `missing_token` and the site displays fallback service items.
 
 
+<<<<<<< HEAD
 ## One-location Online booking automapping
 
 Use the location-specific booking URL as the default booking base. Example:
@@ -102,3 +103,21 @@ SQUARE_PRIMARY_LOCATION_ID=LGM30Y8TKSR2D
 ```
 
 The Netlify function will automatically create service-level booking links by appending `/services/{serviceVariationId}` to the location booking URL. It will also use `SQUARE_PRIMARY_LOCATION_ID` to filter out catalog objects that are not available at that location when Square provides location availability metadata.
+=======
+## Official Square appointment widget
+
+The booking page embeds the official Square Appointments widget:
+
+```html
+<script src="https://app.squareup.com/appointments/buyer/widget/muw2pjqg5kbix3/LGM30Y8TKSR2D.js"></script>
+```
+
+Use this Netlify value for the fallback/direct booking URL:
+
+```txt
+SQUARE_BOOKING_SITE_URL=https://app.squareup.com/appointments/buyer/widget/muw2pjqg5kbix3/LGM30Y8TKSR2D
+SQUARE_PRIMARY_LOCATION_ID=LGM30Y8TKSR2D
+```
+
+The site no longer guesses service-specific deep links from Catalog IDs. All Book Appointment buttons route to `/booking.html`, where the official widget lets clients choose any available service for the selected location.
+>>>>>>> 8fa6d00 (Square Widget)

@@ -6,10 +6,13 @@ function extractLocationId(url) {
   const match = String(url || '').match(/\/location\/([^/?#]+)/i);
   return match ? decodeURIComponent(match[1]) : '';
 }
+<<<<<<< HEAD
 function serviceBookingUrl(baseUrl, serviceVariationId) {
   const cleanBase = String(baseUrl || '').replace(/[?#].*$/, '').replace(/\/services\/?$/i, '').replace(/\/+$/, '');
   return cleanBase && serviceVariationId ? `${cleanBase}/services/${encodeURIComponent(serviceVariationId)}` : cleanBase;
 }
+=======
+>>>>>>> 8fa6d00 (Square Widget)
 function isPresentAtLocation(obj, locationId) {
   if (!obj || !locationId) return true;
   if (Array.isArray(obj.absent_at_location_ids) && obj.absent_at_location_ids.includes(locationId)) return false;
