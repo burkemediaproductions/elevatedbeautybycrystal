@@ -21,7 +21,7 @@ SQUARE_API_VERSION=2026-05-20
 SQUARE_BOOKING_SITE_URL=https://book.squareup.com/appointments/YOUR-SQUARE-BOOKING-SLUG
 ```
 
-Optional category booking links. Use the Square category/service links Crystal copies from her Square booking site.
+Optional category booking links. Use the Square category/service links Crystal copies from her online booking site.
 ```json
 SQUARE_CATEGORY_BOOKING_LINKS_JSON={
   "facials": "https://book.squareup.com/...",
@@ -42,7 +42,7 @@ SQUARE_SERVICE_BOOKING_LINKS_JSON={
 ```
 
 ## Square notes
-This build uses Option B: custom website service pages, then Square booking/payment handoff. The browser never receives the Square access token. The Netlify Function reads the Square Service Library and returns public-facing service names/descriptions/prices/durations plus booking links.
+This build uses Option B: custom website service pages, then online booking/payment handoff. The browser never receives the Square access token. The Netlify Function reads the Square Service Library and returns public-facing service names/descriptions/prices/durations plus booking links.
 
 Full custom booking directly inside the website can be added later, but Square seller-level create/update/cancel booking API workflows require a paid Square Appointments plan according to Square's current developer docs.
 
@@ -108,3 +108,8 @@ SQUARE_PRIMARY_LOCATION_ID=LGM30Y8TKSR2D
 ```
 
 The site no longer guesses service-specific deep links from Catalog IDs. All Book Appointment buttons route to `/booking.html`, where the official widget lets clients choose any available service for the selected location.
+
+
+## Current booking strategy
+
+The public site now uses the API-powered service/category pages as branded landing pages. All service and category booking calls-to-action point to `/booking.html`, where the official Square Appointments widget is embedded for the final service selection, appointment time, and secure checkout. This avoids unreliable guessed service deep-links and keeps the flow as seamless as possible.
