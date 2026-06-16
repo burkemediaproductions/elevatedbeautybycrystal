@@ -6,13 +6,6 @@ function extractLocationId(url) {
   const match = String(url || '').match(/\/location\/([^/?#]+)/i);
   return match ? decodeURIComponent(match[1]) : '';
 }
-<<<<<<< HEAD
-function serviceBookingUrl(baseUrl, serviceVariationId) {
-  const cleanBase = String(baseUrl || '').replace(/[?#].*$/, '').replace(/\/services\/?$/i, '').replace(/\/+$/, '');
-  return cleanBase && serviceVariationId ? `${cleanBase}/services/${encodeURIComponent(serviceVariationId)}` : cleanBase;
-}
-=======
->>>>>>> 8fa6d00 (Square Widget)
 function isPresentAtLocation(obj, locationId) {
   if (!obj || !locationId) return true;
   if (Array.isArray(obj.absent_at_location_ids) && obj.absent_at_location_ids.includes(locationId)) return false;
@@ -60,7 +53,7 @@ exports.handler = async function () {
         const price = priceMoney ? new Intl.NumberFormat('en-US',{style:'currency',currency:priceMoney.currency || 'USD'}).format((priceMoney.amount || 0)/100) : '';
         const durationMs = vd.service_duration || vd.available_for_booking ? vd.service_duration : null;
         const duration = durationMs ? `${Math.round(durationMs/60000)} min` : '';
-        const bookingUrl = serviceBookingLinks[v.id] || serviceBookingLinks[name] || serviceBookingLinks[d.name] || categoryBookingLinks[categoryKey] || serviceBookingUrl(bookingSiteUrl, v.id) || bookingSiteUrl;
+        const bookingUrl = serviceBookingLinks[v.id] || serviceBookingLinks[name] || serviceBookingLinks[d.name] || categoryBookingLinks[categoryKey] || bookingSiteUrl;
         services.push({ id: v.id, itemId: item.id, name, categoryKey, categoryName, description: d.description || '', price, duration, bookingUrl });
       }
     }

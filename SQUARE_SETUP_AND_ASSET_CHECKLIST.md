@@ -21,7 +21,7 @@ SQUARE_API_VERSION=2026-05-20
 SQUARE_BOOKING_SITE_URL=https://book.squareup.com/appointments/YOUR-SQUARE-BOOKING-SLUG
 ```
 
-Optional category booking links. Use the Square category/service links Crystal copies from her Online booking site.
+Optional category booking links. Use the Square category/service links Crystal copies from her Square booking site.
 ```json
 SQUARE_CATEGORY_BOOKING_LINKS_JSON={
   "facials": "https://book.squareup.com/...",
@@ -42,7 +42,7 @@ SQUARE_SERVICE_BOOKING_LINKS_JSON={
 ```
 
 ## Square notes
-This build uses Option B: custom website service pages, then Online booking/payment handoff. The browser never receives the Square access token. The Netlify Function reads the online service menu and returns public-facing service names/descriptions/prices/durations plus booking links.
+This build uses Option B: custom website service pages, then Square booking/payment handoff. The browser never receives the Square access token. The Netlify Function reads the Square Service Library and returns public-facing service names/descriptions/prices/durations plus booking links.
 
 Full custom booking directly inside the website can be added later, but Square seller-level create/update/cancel booking API workflows require a paid Square Appointments plan according to Square's current developer docs.
 
@@ -92,18 +92,6 @@ Then visit:
 If Square env vars are not set, the function returns `missing_token` and the site displays fallback service items.
 
 
-<<<<<<< HEAD
-## One-location Online booking automapping
-
-Use the location-specific booking URL as the default booking base. Example:
-
-```txt
-SQUARE_BOOKING_SITE_URL=https://book.squareup.com/appointments/vjfs1tepkppbbq/location/LGM30Y8TKSR2D
-SQUARE_PRIMARY_LOCATION_ID=LGM30Y8TKSR2D
-```
-
-The Netlify function will automatically create service-level booking links by appending `/services/{serviceVariationId}` to the location booking URL. It will also use `SQUARE_PRIMARY_LOCATION_ID` to filter out catalog objects that are not available at that location when Square provides location availability metadata.
-=======
 ## Official Square appointment widget
 
 The booking page embeds the official Square Appointments widget:
@@ -120,4 +108,3 @@ SQUARE_PRIMARY_LOCATION_ID=LGM30Y8TKSR2D
 ```
 
 The site no longer guesses service-specific deep links from Catalog IDs. All Book Appointment buttons route to `/booking.html`, where the official widget lets clients choose any available service for the selected location.
->>>>>>> 8fa6d00 (Square Widget)
