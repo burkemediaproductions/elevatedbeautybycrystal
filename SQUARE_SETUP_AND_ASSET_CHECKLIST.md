@@ -97,13 +97,13 @@ If Square env vars are not set, the function returns `missing_token` and the sit
 The booking page embeds the official Square Appointments widget:
 
 ```html
-<script src="https://app.squareup.com/appointments/buyer/widget/muw2pjqg5kbix3/LGM30Y8TKSR2D.js"></script>
+<iframe src="https://book.squareup.com/appointments/muw2pjqg5kbix3/location/LGM30Y8TKSR2D/services" title="Book an appointment with Elevated Beauty By Crystal"></iframe>
 ```
 
 Use this Netlify value for the fallback/direct booking URL:
 
 ```txt
-SQUARE_BOOKING_SITE_URL=https://app.squareup.com/appointments/buyer/widget/muw2pjqg5kbix3/LGM30Y8TKSR2D
+SQUARE_BOOKING_SITE_URL=https://book.squareup.com/appointments/muw2pjqg5kbix3/location/LGM30Y8TKSR2D/services
 SQUARE_PRIMARY_LOCATION_ID=LGM30Y8TKSR2D
 ```
 
