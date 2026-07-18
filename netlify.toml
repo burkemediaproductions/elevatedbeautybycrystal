@@ -1,20 +1,4 @@
-[build]
-  publish = "."
-  functions = "netlify/functions"
-
-[functions]
-  node_bundler = "esbuild"
-
-[[headers]]
-  for = "/*"
-  [headers.values]
-    X-Frame-Options = "SAMEORIGIN"
-    X-Content-Type-Options = "nosniff"
-    Referrer-Policy = "strict-origin-when-cross-origin"
-    Permissions-Policy = "camera=(), microphone=(), geolocation=()"
-    Content-Security-Policy = "default-src 'self'; script-src 'self' 'unsafe-inline' https://app.squareup.com https://squareup.com https://*.squareup.com https://square.site https://*.square.site; style-src 'self' 'unsafe-inline' https://app.squareup.com https://squareup.com https://*.squareup.com https://square.site https://*.square.site; img-src 'self' data: https:; media-src 'self' https:; frame-src https://www.google.com https://app.squareup.com https://squareup.com https://*.squareup.com https://book.squareup.com https://square.site https://*.square.site https://*.squarecdn.com; connect-src 'self' https://app.squareup.com https://squareup.com https://*.squareup.com https://connect.squareup.com https://connect.squareupsandbox.com https://square.site https://*.square.site; font-src 'self' data: https:; form-action 'self' https://app.squareup.com https://squareup.com https://*.squareup.com https://book.squareup.com https://square.site https://*.square.site; base-uri 'self'; object-src 'none';"
-
 [[redirects]]
-  from = "/index.html"
-  to = "/"
-  status = 301
+  from = "/*"
+  to = "/index.html"
+  status = 200
